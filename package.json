@@ -1,0 +1,22 @@
+{
+  "name": "yikechuanmei",
+  "version": "1.0.0",
+  "description": "壹刻传媒 壁纸解析",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeachZhou/yikechuanmei.git"
+  },
+  "author": "leachzhou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeachZhou/yikechuanmei/issues"
+  },
+  "homepage": "https://github.com/LeachZhou/yikechuanmei#readme",
+  "dependencies": {
+    "webpack": "^4.28.3"
+  }
+}

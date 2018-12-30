@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>壹刻传媒壁纸在线解析提取</title>
+    <meta name="description" content="壹刻传媒壁纸在线解析提取,包括壹刻传媒壁纸提取、oppo锁屏杂志壁纸提取、华为锁屏壁纸提取、vivo锁屏杂志壁纸提取，4K超清手机壁纸，4K壁纸网站。">
+    <meta name="keywords" content="壹刻传媒,oppo壁纸,oppo壁纸提取,锁屏杂志,oppo锁屏杂志,华为壁纸提取,华为锁屏杂志">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="banner">
+        <ul class="banner-bg">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="banner-con">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="title-bg"></div>
+            <div class="title-bg"></div>
+            <div class="banner-title-con">
+                <h1 class="banner-title">
+                    壹刻传媒相簿
+                </h1>
+                <p class="banner-des">
+                    # 遇你所缘 见你所爱 #
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="body-setion">
+        <div class="uploadSetion">
+            <h2>上传区</h2>
+            <div class="uploadSetion-con">
+                <a href="javascript:void(0);" class="selectFile">选择文件</a>
+                <input type="file" id="uploadFile">
+                <button type="button" id="uploadFileBtn">在线提取</button>
+            </div>
+            <div>
+                点击这里 <a class="example"
+                        href="https://github.com/LeachZhou/yikechuanmei/files/2717047/oppo1229.txt"><span>#下载示例文件#</span>
+            </a> 选择文件在线提取
+            </div>
+            <a class="example" href="getfile.html">
+                # 文件获取及使用教程 #
+            </a>
+        </div>
+        <div class="image-list">
+            <h2>壁纸区</h2>
+            <div class="imgListCount" v-if="imgList.length">目前图片数量：{{imgList.length}}</div>
+            <ul v-if="imgList.length">
+                <li v-for="item in imgList">
+                    <img class="image-list-img"
+                         :src="item.img"
+                         alt="">
+                    <div class="image-list-info">
+                        <h3 class="image-list-title">{{item.title}}</h3>
+                        <p class="image-list-author">{{item.author}}</p>
+                        <p class="image-list-time">{{item.time}}</p>
+                    </div>
+                </li>
+            </ul>
+            <div v-else class="block">
+                图片为空
+            </div>
+        </div>
+        <div class="footer">
+            © <span>2018</span> <a href="https://github.com/leachZhou">LeachZhou</a> All rights reserved. <br>
+            此项目在GitHub上开源 <a href="https://github.com/leachZhou/yikechuanmei">v1.0</a>
+        </div>
+    </div>
+</div>
+<!--<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="util/oppoJson.js"></script>
+<script src="util/util.js"></script>
+<script src="util/process.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            imgList: []
+        },
+        mounted: function () {
+            $('.selectFile').on('click', function () {
+                $('#uploadFile').click();
+            });
+            $('#uploadFileBtn').on('click', function () {
+                getFile('#uploadFile', function (res) {
+                    oppoWallpaperJson(res, function (ret) {
+                        vm.imgList = ret;
+                    });
+                })
+            });
+            $('.banner-bg li').each(function (index) {
+                var liIndex = index + 1;
+                var length = $('.banner-bg li').length + 1;
+                var len = length - liIndex;
+                $(this).css({
+                    // 'width': 60 * len + 'px',
+                    // 'height': 60 * len + 'px',
+                    'transform': 'rotate(' + parseInt((len - 1) * 30 + 45) + 'deg)',
+                    'z-index': liIndex
+                });
+                if (index % 2 == 1) {
+                    $(this).css({
+                        'animation': 'neon4 1.5s ease-in-out infinite alternate'
+                    });
+                }
+            })
+        }
+    })
+
+</script>
+</body>
+</html>
