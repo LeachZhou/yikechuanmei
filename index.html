@@ -49,7 +49,7 @@
             </div>
             <div>
                 点击这里 <a class="example"
-                        href="https://github.com/LeachZhou/yikechuanmei/files/2717047/oppo1229.txt"><span>#下载示例文件#</span>
+                        href="https://github.com/LeachZhou/yikechuanmei/files/2717047/oppo1229.txt"><span># 下载示例文件 #</span>
             </a> 选择文件在线提取
             </div>
             <a class="example" href="getfile.html">
@@ -87,11 +87,14 @@
 <script src="util/oppoJson.js"></script>
 <script src="util/util.js"></script>
 <script src="util/process.js"></script>
+<script src="util/bmob-min.js"></script>
+<script src="util/bmob-util.js"></script>
 <script>
     var vm = new Vue({
         el: '#app',
         data: {
-            imgList: []
+            imgList: [],
+            getAllImageScorePage: 1
         },
         mounted: function () {
             $('.selectFile').on('click', function () {
@@ -100,6 +103,10 @@
             $('#uploadFileBtn').on('click', function () {
                 getFile('#uploadFile', function (res) {
                     oppoWallpaperJson(res, function (ret) {
+                        console.log(ret);
+                        for (var i = 0; i < ret.length; i++) {
+                            addImageScore(ret[i]);
+                        }
                         vm.imgList = ret;
                     });
                 })

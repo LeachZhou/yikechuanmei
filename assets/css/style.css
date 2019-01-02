@@ -388,13 +388,13 @@ h2:after {
     position: relative;
     border: 5px solid #ffffff;
     box-shadow: 0 0 20px #43c9fd;
-    margin: 0 20px 20px 0;
+    margin: 0 10px 20px;
     opacity: 0;
     animation: bannerCon 1.5s linear forwards .6s alternate;
 }
 
 .image-list ul li:nth-child(3n) {
-    margin: 0 0 20px;
+    margin: 0 auto 20px;
 }
 
 .image-list-info {
